@@ -5,13 +5,19 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls.WebParts;
 using System.Windows.Forms;
 
 namespace calculator
 {
     public partial class Form1 : Form
     {
+        double overall = 0.0;
+
+        string action = "";
+
         public Form1()
         {
             InitializeComponent();
@@ -22,7 +28,12 @@ namespace calculator
             
         }
 
-
+        double OperationHandler(double a, double b,string operation)
+        {
+            if (operation == "plus") return a + b;
+            if (operation == "minus") return a - b;
+            return a + b;
+        }
         private void guna2TextBox1_TextChanged(object sender, EventArgs e)
         {
             string text = TextBox.Text;
@@ -35,17 +46,40 @@ namespace calculator
                 TextBox.SelectionStart = TextBox.Text.Length;
             }
 
-
+            TextBox1.Text = "overall = " + overall;
         }
 
         private void guna2Button3_Click(object sender, EventArgs e)
         {
+            string text = TextBox.Text;
+
+            if(text.Length == 1)
+            {
+                TextBox.Text = "0";
+            }
+            else
+            {
+                TextBox.Text = TextBox.Text.Substring(0, TextBox.Text.Length - 1);
+            }
 
         }
 
         private void guna2Button15_Click(object sender, EventArgs e)
-        {
+        {   
+            if(action == "")
+            {
 
+            overall -= double.Parse(TextBox.Text);
+            }
+            else
+            {
+                if(double.TryParse(TextBox.Text, out double number))
+                {
+                    overall = OperationHandler(overall, number, action);
+                }
+            }
+            action = "minus";
+            TextBox.Text = "0";
         }
 
         private void guna2Button24_Click(object sender, EventArgs e)
@@ -100,11 +134,39 @@ namespace calculator
 
         private void guna2Button22_Click(object sender, EventArgs e)
         {
-            if (!TextBox.Text.EndsWith("."))
+            if (TextBox.Text.IndexOf(".") == -1)
             {
-
             TextBox.Text += ".";
             }
+
+        }
+
+        private void guna2Button2_Click(object sender, EventArgs e)
+        {
+            TextBox.Text = "0";
+        }
+
+        private void guna2Button19_Click(object sender, EventArgs e)
+        {
+            if (action == "")
+            {
+                action = "plus";
+                overall += double.Parse(TextBox.Text);
+            }
+            else
+            {
+                if (double.TryParse(TextBox.Text, out double number))
+                {
+                    overall = OperationHandler(overall, number, action);
+                }
+               
+            }
+
+            TextBox.Text = "0";
+        }
+
+        private void guna2TextBox1_TextChanged_1(object sender, EventArgs e)
+        {
 
         }
     }

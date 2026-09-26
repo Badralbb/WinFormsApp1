@@ -54,6 +54,7 @@
             this.guna2Button22 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button23 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button24 = new Guna.UI2.WinForms.Guna2Button();
+            this.TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
             this.SuspendLayout();
             // 
             // TextBox
@@ -141,6 +142,7 @@
             this.guna2Button2.Size = new System.Drawing.Size(76, 50);
             this.guna2Button2.TabIndex = 5;
             this.guna2Button2.Text = "C";
+            this.guna2Button2.Click += new System.EventHandler(this.guna2Button2_Click);
             // 
             // guna2Button3
             // 
@@ -487,6 +489,7 @@
             this.guna2Button19.Size = new System.Drawing.Size(76, 50);
             this.guna2Button19.TabIndex = 22;
             this.guna2Button19.Text = "+";
+            this.guna2Button19.Click += new System.EventHandler(this.guna2Button19_Click);
             // 
             // guna2Button20
             // 
@@ -596,12 +599,32 @@
             this.guna2Button24.Text = "7";
             this.guna2Button24.Click += new System.EventHandler(this.guna2Button24_Click);
             // 
+            // TextBox1
+            // 
+            this.TextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TextBox1.DefaultText = "";
+            this.TextBox1.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.TextBox1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.TextBox1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.TextBox1.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.TextBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TextBox1.Location = new System.Drawing.Point(357, 22);
+            this.TextBox1.Name = "TextBox1";
+            this.TextBox1.PlaceholderText = "";
+            this.TextBox1.SelectedText = "";
+            this.TextBox1.Size = new System.Drawing.Size(200, 36);
+            this.TextBox1.TabIndex = 28;
+            this.TextBox1.TextChanged += new System.EventHandler(this.guna2TextBox1_TextChanged_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HighlightText;
             this.ClientSize = new System.Drawing.Size(800, 573);
+            this.Controls.Add(this.TextBox1);
             this.Controls.Add(this.guna2Button24);
             this.Controls.Add(this.guna2Button23);
             this.Controls.Add(this.guna2Button22);
@@ -661,6 +684,7 @@
         private Guna.UI2.WinForms.Guna2Button guna2Button22;
         private Guna.UI2.WinForms.Guna2Button guna2Button23;
         private Guna.UI2.WinForms.Guna2Button guna2Button24;
+        private Guna.UI2.WinForms.Guna2TextBox TextBox1;
     }
 }
 
