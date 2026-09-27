@@ -18,6 +18,10 @@ namespace calculator
 
         string action = "";
 
+        
+
+
+
         public Form1()
         {
             InitializeComponent();
@@ -28,11 +32,24 @@ namespace calculator
             
         }
 
-        double OperationHandler(double a, double b,string operation)
+       
+
+            double OperationHandler(double a, double b,string operation)
         {
             if (operation == "plus") return a + b;
             if (operation == "minus") return a - b;
-            return a + b;
+            if (operation == "multiply") return a * b;
+            if (operation == "divide")
+            {
+                if(b == 0)
+                {
+                    MessageBox.Show("Cannot Divide By Zero");
+                    return a;
+                }
+
+                return a / b;
+            }
+            return a;
         }
         private void guna2TextBox1_TextChanged(object sender, EventArgs e)
         {
@@ -46,7 +63,28 @@ namespace calculator
                 TextBox.SelectionStart = TextBox.Text.Length;
             }
 
-            TextBox1.Text = "overall = " + overall;
+            string symbol = "";
+
+            switch (action)
+            {
+                case "plus":
+                    symbol = "+";
+                    break;
+                case "minus":
+                    symbol = "-";
+                    break;
+                case "multiply":
+                    symbol = "x";
+                    break;
+                case "divide":
+                    symbol = "/";
+                    break;
+                default:
+                    symbol = "";
+                    break;
+            }
+
+            TextBox1.Text = "overall = " + overall + " " + symbol + " " + TextBox.Text;
         }
 
         private void guna2Button3_Click(object sender, EventArgs e)
@@ -69,7 +107,7 @@ namespace calculator
             if(action == "")
             {
 
-            overall -= double.Parse(TextBox.Text);
+            overall = double.Parse(TextBox.Text);
             }
             else
             {
@@ -79,6 +117,7 @@ namespace calculator
                 }
             }
             action = "minus";
+     
             TextBox.Text = "0";
         }
 
@@ -144,14 +183,15 @@ namespace calculator
         private void guna2Button2_Click(object sender, EventArgs e)
         {
             TextBox.Text = "0";
+            overall = 0;
         }
 
         private void guna2Button19_Click(object sender, EventArgs e)
         {
             if (action == "")
             {
-                action = "plus";
-                overall += double.Parse(TextBox.Text);
+
+                overall = double.Parse(TextBox.Text);
             }
             else
             {
@@ -159,14 +199,109 @@ namespace calculator
                 {
                     overall = OperationHandler(overall, number, action);
                 }
+
+
                
             }
 
+            action = "plus";
+         
             TextBox.Text = "0";
         }
 
         private void guna2TextBox1_TextChanged_1(object sender, EventArgs e)
         {
+
+        }
+
+        private void guna2Button11_Click(object sender, EventArgs e)
+        {
+            if (action == "")
+            {
+                overall = double.Parse(TextBox.Text);
+            }
+            else
+            {
+                if (double.TryParse(TextBox.Text, out double number))
+                {
+                    overall = OperationHandler(overall, number, action);
+                }
+
+            }
+            action = "multiply";
+ 
+            TextBox.Text = "0";
+        }
+
+        private void guna2Button7_Click(object sender, EventArgs e)
+        {
+            if (action == "")
+            {
+
+                overall = double.Parse(TextBox.Text);
+            }
+            else
+            {
+                if (double.TryParse(TextBox.Text, out double number))
+                {
+                    overall = OperationHandler(overall, number, action);
+                }
+
+            }
+
+            action = "divide";
+
+            TextBox.Text = "0";
+
+        }
+
+        private void guna2Button5_Click(object sender, EventArgs e)
+        {
+            
+            
+                if (double.TryParse(TextBox.Text, out double number))
+                {
+                   TextBox.Text = number * number + "";
+                }
+
+                
+        }
+
+        private void guna2Button4_Click(object sender, EventArgs e)
+        {
+          
+                if (double.TryParse(TextBox.Text, out double number))
+                {
+                TextBox.Text = (1 / number) + "";
+                }
+
+           
+        }
+
+        private void guna2Button6_Click(object sender, EventArgs e)
+        {
+            if (double.TryParse(TextBox.Text, out double number))
+            {
+                TextBox.Text = Math.Sqrt(number) + "";
+            }
+        }
+
+        private void guna2Button23_Click(object sender, EventArgs e)
+        {
+            if (action == "")
+            {
+                return;
+            }
+            else
+            {
+                if (double.TryParse(TextBox.Text, out double number))
+                {
+                    overall = OperationHandler(overall, number, action);
+                }
+
+            }
+
+            TextBox.Text = "0";
 
         }
     }
