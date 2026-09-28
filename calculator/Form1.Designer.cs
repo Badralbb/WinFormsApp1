@@ -74,7 +74,6 @@
             this.TextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TextBox.Name = "TextBox";
             this.TextBox.PlaceholderText = "";
-            this.TextBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.TextBox.SelectedText = "";
             this.TextBox.Size = new System.Drawing.Size(322, 50);
             this.TextBox.TabIndex = 2;
@@ -100,6 +99,7 @@
             this.button1.Size = new System.Drawing.Size(76, 50);
             this.button1.TabIndex = 3;
             this.button1.Text = "%";
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // guna2Button1
             // 
@@ -121,6 +121,7 @@
             this.guna2Button1.Size = new System.Drawing.Size(76, 50);
             this.guna2Button1.TabIndex = 4;
             this.guna2Button1.Text = "CE";
+            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
             // guna2Button2
             // 
@@ -516,6 +517,7 @@
             this.guna2Button20.Size = new System.Drawing.Size(76, 50);
             this.guna2Button20.TabIndex = 23;
             this.guna2Button20.Text = "⁺/₋";
+            this.guna2Button20.Click += new System.EventHandler(this.guna2Button20_Click);
             // 
             // guna2Button21
             // 
